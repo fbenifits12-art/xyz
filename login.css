@@ -1,0 +1,60 @@
+body {
+font-family: Arial;
+text-align: center;
+background-color: black;
+}
+video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+.container {
+  position: relative;
+  z-index: 1;
+  margin-top: 100px;
+  padding: 20px;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+}
+button {
+background-color: white;
+padding: 6px 10px;
+margin: 5px;
+width: 200px;
+height: 40px;
+color: black;
+}
+.overlay {
+position: fixed;
+width: 100%;
+height: 100%;
+background: rgba(0,0,0,0.5);
+top: 0;
+left: 0;
+z-index: -1;
+opacity: 0;
+transition: 0.3s;
+}
+.modal {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+background-color: black;
+width: 300px;
+padding: 15px;
+border: 1px solid grey;
+z-index: -1;
+opacity: 0;
+transition: 0.3s;
+}
+li{
+    color: white;
+    text-align: left;
+}

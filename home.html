@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to DSA Sheet</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net">
+
+    
+</head>
+<body>
+    <video src="104452_trimmed.mp4" autoplay muted loop></video>
+    <br><h1>AlgoTracker</h1><br>
+    <div class="header">
+        <nav class="navbar">
+           <div class="left"><a class="main" href="home.html">DSA Sheet</a></div>
+              <div class="right">
+                <a href="profile.html">Profile</a>
+                <a href="resource.html">Resources</a>
+                <a href="index.html">Logout</a>
+            </div>
+        </nav>
+    </div>
+    <h1>DSA Progress Tracker</h1>
+    <div class="progress">
+        Overall Progress: <span id="result">0/124</span>
+    </div>
+    <div class="box">
+    <p class="topic" onclick="toggle(this)">
+       <span class="arrow">></span>  Learn the basics
+    </p>
+    <div class="content" id="basics">
+        <table>
+            <tr>
+                <th>Status</th>
+                <th>Topic</th>
+                <th>Difficulty</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>STL</td>
+                <td class="easy">Easy</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Recursion</td>
+                <td class="medium">Medium</td> 
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Bit Manipulation</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Backtracking</td>
+                <td class="hard">Hard</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Hashing</td>
+                <td class="medium">Medium</td>
+            </tr>
+        </table>
+    </div>
+    <p class="topic" onclick="toggle(this)">
+        <span class="arrow">></span>  Sorting Techniques
+    </p>
+    <div class="content" id="sorting">
+        <table>
+            <tr>
+                <th>Status</th>
+                <th>Topic</th>
+                <th>Difficulty</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Bubble Sort</td>
+                <td class="easy">Easy</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Selection Sort</td>
+                <td class="easy">Easy</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Insertion Sort</td>
+                <td class="easy">Easy</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Merge Sort</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Quick Sort</td>
+                <td class="medium">Medium</td>
+            </tr>    
+        </table>
+    </div>
+    <p class="topic" onclick="toggle(this)">
+       <span class="arrow">></span>  Arrays
+    </p>
+    <div class="content" id="arrays">
+        <table>
+            <tr>
+                <th>Status</th>
+                <th>Topic</th>
+                <th>Difficulty</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Two Sum</td>
+                <td class="easy">Easy</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Best Time to Buy and Sell Stock</td>
+                <td class="easy">Easy</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Product of Array Except Self</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Maximum Subarray</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Trapping Rain Water</td>
+                <td class="hard">Hard</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Left Rotate Array by K Places</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Longest subarray with given sum K(positives)</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Longest subarray with given sum K(negatives)</td>
+                <td class="hard">Hard</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Print the matrix in spiral manner</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>4 Sum</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Maximum Product Subarray in an Array</td>
+                <td class="hard">Hard</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Maximum Sum Subarray in an Array</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Count Inversions</td>
+                <td class="hard">Hard</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Largest Subarray with Sum 0</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Merge Overlapping Subintervals</td>
+                <td class="medium">Medium</td>
+            </tr>
+        </table>
+    </div>
+    <p class="topic" onclick="toggle(this)">
+       <span class="arrow">></span>  Searching Techniques
+    </p>
+    <div class="content" id="searching">
+        <table>
+            <tr>
+                <th>Status</th>
+                <th>Topic</th>
+                <th>Difficulty</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Linear Search</td>
+                <td class="easy">Easy</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Linear Search</td>
+                <td class="easy">Easy</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Binary Search</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Search in Rotated Sorted Array</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Search in 2D Matrix</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Find Peak Element</td>
+                <td class="medium">Medium</td>
+            </tr>
+             <tr>
+                <td><input type="checkbox"></td>
+                <td>Find Minimum in Rotated Sorted Array</td>
+                <td class="medium">Medium</td>
+            </tr>
+             <tr>
+                <td><input type="checkbox"></td>
+                <td>Find First and Last Position of Element in Sorted Array</td>
+                <td class="medium">Medium</td>
+            </tr>
+             <tr>
+                <td><input type="checkbox"></td>
+                <td>Find the Duplicate Number</td>
+                <td class="medium">Medium</td>
+            </tr>
+             <tr>
+                <td><input type="checkbox"></td>
+                <td>Find the Missing Number</td>
+                <td class="medium">Medium</td>
+            </tr>
+             <tr>
+                <td><input type="checkbox"></td>
+                <td>Find the Missing and Repeating Number</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Jump Search</td>
+                <td class="medium">Medium</td>
+            </tr>
+        </table>
+    </div>
+    <p class="topic" onclick="toggle(this)">
+       <span class="arrow">></span>  Strings
+    </p>
+    <div class="content" id="strings">
+        <table>
+            <tr>
+                <th>Status</th>
+                <th>Topic</th>
+                <th>Difficulty</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Reverse a String</td>
+                <td class="easy">Easy</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Check if a String is Palindrome</td>
+                <td class="easy">Easy</td>  
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Longest Common Prefix</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Longest Palindromic Substring</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Count and Say</td>
+                <td class="medium">Medium</td>      
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Group Anagrams</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Longest Substring Without Repeating Characters</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Reverse every word in a string</td>
+                <td class="medium">Medium</td>
+            </tr>
+        </table>
+    </div>
+    <p class="topic" onclick="toggle(this)">
+       <span class="arrow">></span>  Stacks and Queues
+    </p>
+    <div class="content" id="stacksqueues">
+        <table>
+            <tr>
+                <th>Status</th>
+                <th>Topic</th>
+                <th>Difficulty</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Stack using Arrays</td>
+                <td class="easy">Easy</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Stack using Linked List</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Queue using Arrays</td>
+                <td class="easy">Easy</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Queue using Linked List</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Deque using Arrays</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Deque using Linked List</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Stack using Queues</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Queue using Stacks</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Min Stack</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Circular Queue using Arrays</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Circular Queue using Linked List</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Priority Queue using Arrays</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Priority Queue using Linked List</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Priority Queue using Heap</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Stack using Single Queue</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Queue using Single Stack</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Stack using Two Queues</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Queue using Two Stacks</td>
+                <td class="medium">Medium</td>
+            </tr>
+        </table>
+    </div>
+    <p class="topic" onclick="toggle(this)">
+       <span class="arrow">></span>  Linked Lists
+    </p>
+    <div class="content" id="linkedlists">
+        <p class="topic" onclick="toggle(this)"> <span class="arrow">></span>Single Linked List</p>
+        <div class="content" id="singlelinkedlist">
+            <table>
+                <tr>
+                    <th>Status</th>
+                    <th>Topic</th>
+                    <th>Difficulty</th>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Reverse a Linked List</td>
+                    <td class="medium">Medium</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Find the Intersection Point of Two Linked Lists</td>
+                    <td class="medium">Medium</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Remove N-th Node from End of List</td>
+                    <td class="medium">Medium</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Merge Two Sorted Linked Lists</td>
+                    <td class="medium">Medium</td>
+                </tr>
+            </table>
+        </div>
+        <p class="topic" onclick="toggle(this)"> <span class="arrow">></span>Doubly Linked List</p>
+        <div class="content" id="doublylinkedlist">
+            <table>
+                <tr>
+                    <th>Status</th>
+                    <th>Topic</th>
+                    <th>Difficulty</th>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Reverse a Doubly Linked List</td>
+                    <td class="medium">Medium</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Detect Cycle in a Doubly Linked List</td>
+                    <td class="medium">Medium</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Find the Intersection Point of Two Doubly Linked Lists</td>
+                    <td class="medium">Medium</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Remove N-th Node from End of Doubly Linked List</td>
+                    <td class="medium">Medium</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Merge Two Sorted Doubly Linked Lists</td>
+                    <td class="medium">Medium</td>
+                </tr>
+            </table>
+        </div>
+        <p class="topic" onclick="toggle(this)"> <span class="arrow">></span>Circular Linked List</p>
+        <div class="content" id="circularlinkedlist">
+            <table>
+                <tr>
+                    <th>Status</th>
+                    <th>Topic</th>
+                    <th>Difficulty</th>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Detect Cycle in a Circular Linked List</td>
+                    <td class="medium">Medium</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Find the Intersection Point of Two Circular Linked Lists</td>
+                    <td class="medium">Medium</td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Remove N-th Node from End of Circular Linked List</td>
+                    <td class="medium">Medium</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <p class="topic" onclick="toggle(this)">
+        <span class="arrow">></span>  Trees
+    </p>
+    <div class="content" id="trees">
+        <table>
+            <tr>
+                <th>Status</th>
+                <th>Topic</th>
+                <th>Difficulty</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Tree Traversal (In-order, Pre-order, Post-order)</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Find the Height of a Tree</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Check if Two Trees are Identical</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Find the Lowest Common Ancestor of Two Nodes in a Tree</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Check if a Binary Tree is Balanced</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Check if a Binary Tree is a Binary Search Tree</td>
+                <td class="medium">Medium</td>
+            </tr>
+        </table>
+    </div>
+    <p class="topic" onclick="toggle(this)">
+        <span class="arrow">></span>  Graphs
+    </p>
+    <div class="content" id="graphs">
+        <table>
+            <tr>
+                <th>Status</th>
+                <th>Topic</th>
+                <th>Difficulty</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Graph Traversal (BFS, DFS)</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Detect Cycle in a Graph</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Find the Shortest Path in a Graph</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Find the Minimum Spanning Tree of a Graph</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Check if a Graph is Bipartite</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Find the Strongly Connected Components of a Graph</td>
+                <td class="medium">Medium</td>
+            </tr>
+        </table>
+    </div>
+    <p class="topic" onclick="toggle(this)"><span class="arrow">></span>  Dynamic Programming</p>
+    <div class="content" id="dynamicprogramming">
+        <table>
+            <tr>
+                <th>Status</th>
+                <th>Topic</th>
+                <th>Difficulty</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Fibonacci Number</td>
+                <td class="easy">Easy</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Climbing Stairs</td>
+                <td class="easy">Easy</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Coin Change</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Longest Increasing Subsequence</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Longest Common Subsequence</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>0/1 Knapsack Problem</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Unbounded Knapsack Problem</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Longest Palindromic Subsequence</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Minimum Edit Distance</td>
+                <td class="medium">Medium</td>
+            </tr>
+        </table>
+    </div>
+    <p class="topic" onclick="toggle(this)"><span class="arrow">></span>  Sliding Window and Two Pointers</p>
+    <div class="content" id="slidingwindow">
+        <table>
+            <tr>
+                <th>Status</th>
+                <th>Topic</th>
+                <th>Difficulty</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Longest Substring Without Repeating Characters</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Minimum Window Substring</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>3 Sum</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Container With Most Water</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Trapping Rain Water</td>
+                <td class="hard">Hard</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Sort Colors</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Find All Anagrams in a String</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Longest Repeating Character Replacement</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Longest Subarray with Sum K(positives)</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Longest Subarray with Sum K(negatives)</td>
+                <td class="hard">Hard</td>
+            </tr>
+        </table>
+    </div>
+    <p class="topic" onclick="toggle(this)"><span class="arrow">></span>  Heaps</p>
+    <div class="content" id="heaps">
+        <table>
+            <tr>
+                <th>Status</th>
+                <th>Topic</th>
+                <th>Difficulty</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Min Heap</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Max Heap</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Find the K-th Largest Element in an Array</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Find the K-th Smallest Element in an Array</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Merge K Sorted Lists</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Implement Priority Queue using Heap</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Find the Median from Data Stream</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Find the Top K Frequent Elements in an Array</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Find the K-th Largest Element in a Stream</td>
+                <td class="medium">Medium</td>
+            </tr>
+        </table>
+    </div>
+    <p class="topic" onclick="toggle(this)"><span class="arrow">></span>  Greedy algorithms</p>
+    <div class="content" id="greedy">
+        <table>
+            <tr>
+                <th>Status</th>
+                <th>Topic</th>
+                <th>Difficulty</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Activity Selection</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Job Scheduling</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Fractional Knapsack</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Huffman Coding</td>
+                <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Prim's Algorithm</td>
+                    <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Kruskal's Algorithm</td>
+                    <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Dijkstra's Algorithm</td>
+                    <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Greedy Coloring</td>
+                    <td class="medium">Medium</td>
+            </tr>
+            <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Greedy Best First Search</td>
+                    <td class="medium">Medium</td>
+            </tr>
+        </table>
+    </div>
+    </div>
+    <hr>
+    <footer>
+        <p style="color: white; text-align: center;">&copy; 2026 AlgoTracker. All rights reserved.</p>
+    </footer>
+    <script src="home.js"></script>
+</body>
+</html>
