@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>DSA Mastery Suite | Vineesh</title>
+  <!-- Bootstrap 5 CSS + Icons + Google Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      background: #0a0c15;
+      color: #eef2ff;
+      overflow-x: hidden;
+    }
+    /* background video styling (from original concept) */
+    #background-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    /* gradient overlay for readability */
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(10,12,21,0.85) 0%, rgba(5,8,18,0.92) 100%);
+      z-index: -1;
+    }
+    /* navbar custom */
+    .navbar-custom {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(71, 85, 105, 0.5);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.6rem;
+      background: linear-gradient(120deg, #fff, #80b2ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .nav-link {
+      color: #cbd5e6 !important;
+      font-weight: 500;
+      margin: 0 6px;
+      transition: 0.2s;
+      border-radius: 40px;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: white !important;
+      background: rgba(59,130,246,0.3);
+      transform: translateY(-1px);
+    }
+    /* card / container styling */
+    .main-container {
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 1rem 1.5rem 3rem;
+    }
+    .glass-card {
+      background: rgba(18, 25, 45, 0.65);
+      backdrop-filter: blur(4px);
+      border-radius: 32px;
+      border: 1px solid rgba(71, 85, 105, 0.4);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .topic-header {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.4rem;
+      padding: 0.9rem 1.2rem;
+      background: rgba(30, 41, 59, 0.7);
+      border-radius: 28px;
+      margin: 0.75rem 0 0;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-left: 5px solid #3b82f6;
+    }
+    .topic-header:hover {
+      background: rgba(51, 65, 85, 0.9);
+      transform: translateX(5px);
+    }
+    .arrow-icon {
+      transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      font-size: 1.3rem;
+    }
+    .topic-header.active .arrow-icon {
+      transform: rotate(90deg);
+    }
+    .collapsible-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s ease-out;
+      margin-left: 1.8rem;
+      padding-left: 0.5rem;
+    }
+    /* nested subtopics */
+    .subtopic {
+      font-size: 1.2rem;
+      padding: 0.6rem 1rem;
+      background: rgba(15, 23, 42, 0.7);
+      border-left-color: #f59e0b;
+      margin-top: 0.5rem;
+    }
+    .subtopic .arrow-icon {
+      font-size: 1rem;
+    }
+    table {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+    th {
+      background: #1e2a3e;
+      padding: 12px;
+      font-weight: 600;
+    }
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #2d3a4e;
+    }
+    .easy { color: #4ade80; font-weight: 500; }
+    .medium { color: #facc15; }
+    .hard { color: #f87171; }
+    .progress-wrapper {
+      background: #0f172a;
+      border-radius: 60px;
+      padding: 1rem 1.5rem;
+      border: 1px solid #334155;
+    }
+    .btn-outline-special {
+      border-color: #3b82f6;
+      color: #90adff;
+    }
+    .btn-outline-special:hover {
+      background: #3b82f6;
+      color: white;
+    }
+    footer {
+      border-top: 1px solid #1e293b;
+      text-align: center;
+      padding: 2rem;
+      color: #6c7a91;
+      font-size: 0.85rem;
+    }
+    .badge-diff {
+      font-size: 0.7rem;
+      padding: 4px 10px;
+      border-radius: 40px;
+    }
+    @media (max-width: 768px) {
+      .main-container { padding: 1rem; }
+      .topic-header { font-size: 1.2rem; padding: 0.7rem 1rem; }
+      .collapsible-content { margin-left: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<video autoplay muted loop id="background-video">
+  <source src="104452_trimmed.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+<div class="video-overlay"></div>
+
+<!-- ======================= NAVIGATION (DROPDOWN + 3 pages) ======================= -->
+<nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="?page=home"><i class="bi bi-code-square me-2"></i>DSA<span style="color:#7c9eff;">Sheet</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="?page=home" id="nav-home"><i class="bi bi-house-door me-1"></i>Tracker</a></li>
+        <li class="nav-item"><a class="nav-link" href="?page=resources" id="nav-resources"><i class="bi bi-book me-1"></i>Resources</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-circle me-1"></i>Account
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="accountDropdown">
+            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="bi bi-box-arrow-in-right"></i> Login</a></li>
+            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#signupModal"><i class="bi bi-pencil-square"></i> Signup</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="bi bi-door-open"></i> Logout (Demo)</a></li>
+          </ul>
+        </li>
+      </ul>
+      <span class="ms-3 text-light" id="userBadge"><i class="bi bi-person-badge"></i> <span id="activeUser">Guest</span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ======================= MODALS for LOGIN/SIGNUP ======================= -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-white border-secondary">
+      <div class="modal-header border-secondary"><h5 class="modal-title"><i class="bi bi-key"></i> Login</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <input type="text" id="loginUsername" class="form-control mb-3 bg-secondary bg-opacity-25 text-white" placeholder="Username">
+        <input type="password" id="loginPassword" class="form-control mb-3 bg-secondary bg-opacity-25 text-white" placeholder="Password">
+        <button class="btn btn-primary w-100" id="doLoginBtn">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="signupModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-white border-secondary">
+      <div class="modal-header border-secondary"><h5 class="modal-title"><i class="bi bi-person-plus"></i> Sign Up</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <input type="text" id="signupEmail" class="form-control mb-3 bg-secondary bg-opacity-25 text-white" placeholder="Email">
+        <input type="text" id="signupUser" class="form-control mb-3 bg-secondary bg-opacity-25 text-white" placeholder="Username">
+        <input type="password" id="signupPass" class="form-control mb-3 bg-secondary bg-opacity-25 text-white" placeholder="Password">
+        <input type="password" id="signupConfirm" class="form-control mb-3 bg-secondary bg-opacity-25 text-white" placeholder="Confirm Password">
+        <button class="btn btn-success w-100" id="doSignupBtn">Register</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= MAIN CONTENT (DYNAMIC PAGE LOADER) ======================= -->
+<div id="app-root" class="main-container"></div>
+<footer>© 2025 DSA Mastery by Vineesh • Track progress, learn efficiently • <i class="bi bi-star-fill text-warning"></i> Keep grinding</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // ---------- GLOBAL STATE & STORAGE ----------
+  let currentUser = localStorage.getItem("dsa_user") || "Guest";
+  let allCheckboxesStates = {};  // will be loaded per user
+  
+  // Helper: get unique storage key for checkboxes based on user
+  function getStorageKey() { return `dsa_progress_${currentUser}`; }
+  
+  // load progress for current user
+  function loadProgressForUser() {
+    const saved = localStorage.getItem(getStorageKey());
+    if (saved) {
+      try {
+        const states = JSON.parse(saved);
+        document.querySelectorAll('.progress-check').forEach((cb, idx) => {
+          if (states[idx] !== undefined) cb.checked = states[idx];
+        });
+      } catch(e) {}
+    }
+    updateOverallStats();
+  }
+  
+  function saveAllProgress() {
+    const allCb = document.querySelectorAll('.progress-check');
+    const states = Array.from(allCb).map(cb => cb.checked);
+    localStorage.setItem(getStorageKey(), JSON.stringify(states));
+    updateOverallStats();
+  }
+  
+  function updateOverallStats() {
+    const allCb = document.querySelectorAll('.progress-check');
+    const total = allCb.length;
+    const done = Array.from(allCb).filter(cb => cb.checked).length;
+    const statSpan = document.getElementById('globalStats');
+    if (statSpan) statSpan.innerText = `${done}/${total}`;
+    const progressPercent = document.getElementById('progressPercent');
+    if(progressPercent) {
+      const percent = total === 0 ? 0 : Math.round((done/total)*100);
+      progressPercent.style.width = percent + "%";
+      progressPercent.innerText = percent + "%";
+    }
+  }
+  
+  function bindCheckboxEvents() {
+    document.querySelectorAll('.progress-check').forEach(cb => {
+      cb.removeEventListener('change', saveAllProgress);
+      cb.addEventListener('change', saveAllProgress);
+    });
+  }
+  
+  // user session update UI
+  function updateUserUI() {
+    document.getElementById('activeUser').innerText = currentUser;
+    if(currentUser !== "Guest") {
+      document.getElementById('userBadge').innerHTML = `<i class="bi bi-person-check-fill text-success"></i> <span id="activeUser">${currentUser}</span>`;
+    } else {
+      document.getElementById('userBadge').innerHTML = `<i class="bi bi-person-badge"></i> <span id="activeUser">Guest</span>`;
+    }
+    loadProgressForUser();   // reload progress after user change
+  }
+  
+  // logout
+  function logout() {
+    currentUser = "Guest";
+    localStorage.setItem("dsa_user", "Guest");
+    updateUserUI();
+    // re-render current page to reload fresh progress (no user-specific)
+    renderPage(getCurrentPage());
+  }
+  
+  // login logic
+  function loginUser(username, pwd) {
+    if(username.trim() === "") { alert("Enter username"); return false; }
+    // demo: accept any non-empty, but if registered earlier we simulate
+    const users = JSON.parse(localStorage.getItem("dsa_users") || "[]");
+    const found = users.find(u => u.username === username && u.password === pwd);
+    if(found || (pwd && username)) {  // fallback for demo
+      currentUser = username;
+      localStorage.setItem("dsa_user", currentUser);
+      updateUserUI();
+      renderPage(getCurrentPage());
+      return true;
+    } else {
+      alert("Invalid credentials. Try demo: user/pass any");
+      return false;
+    }
+  }
+  function signupUser(email, username, pass, confirm) {
+    if(pass !== confirm) { alert("Passwords don't match"); return; }
+    if(!username.trim()) { alert("Username required"); return; }
+    let users = JSON.parse(localStorage.getItem("dsa_users") || "[]");
+    if(users.find(u => u.username === username)) { alert("Username exists"); return; }
+    users.push({ email, username, password: pass });
+    localStorage.setItem("dsa_users", JSON.stringify(users));
+    currentUser = username;
+    localStorage.setItem("dsa_user", currentUser);
+    updateUserUI();
+    renderPage(getCurrentPage());
+    alert("Signup successful! Welcome " + username);
+  }
+  
+  // ---------- PAGE RENDERING (HOME / RESOURCES / extra) ----------
+  function getCurrentPage() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('page') || 'home';
+  }
+  
+  // ----- Home page: DSA SHEET (full featured) -----
+  function renderHomePage() {
+    return `
+      <div class="glass-card">
+        <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+          <h2><i class="bi bi-journal-code"></i> DSA Progress Tracker</h2>
+          <div class="progress-wrapper w-100 w-md-50 mt-2 mt-md-0" style="max-width:320px">
+            <div class="d-flex justify-content-between small"><span>Overall Completion</span><span id="globalStats">0/0</span></div>
+            <div class="progress" style="height: 12px;">
+              <div id="progressPercent" class="progress-bar bg-info" style="width:0%">0%</div>
+            </div>
+            <button class="btn btn-sm btn-outline-special mt-2 w-100" id="clearCompletedBtn"><i class="bi bi-check2-square"></i> Clear completed tasks</button>
+          </div>
+        </div>
+        ${renderTopicsStructure()}
+      </div>
+    `;
+  }
+  
+  // Build full topic tree with nested (arrays, sorting, linked lists substructure etc)
+  function renderTopicsStructure() {
+    // all topics with nested content tables
+    const sections = [
+      { title: "📖 Learn the basics", id: "basics", rows: [["STL","Easy"],["Recursion","Medium"],["Bit Manipulation","Medium"],["Backtracking","Hard"],["Hashing","Medium"]] },
+      { title: "⚡ Sorting Techniques", id: "sorting", rows: [["Bubble Sort","Easy"],["Selection Sort","Easy"],["Insertion Sort","Easy"],["Merge Sort","Medium"],["Quick Sort","Medium"]] },
+      { title: "📊 Arrays", id: "arrays", rows: [["Two Sum","Easy"],["Best Time to Buy and Sell Stock","Easy"],["Product of Array Except Self","Medium"],["Maximum Subarray","Medium"],["Trapping Rain Water","Hard"],["Left Rotate Array by K Places","Medium"],["Longest subarray with given sum K(positives)","Medium"],["Longest subarray with given sum K(negatives)","Hard"],["Print matrix in spiral manner","Medium"],["4 Sum","Medium"],["Maximum Product Subarray","Hard"],["Count Inversions","Hard"],["Largest Subarray with Sum 0","Medium"],["Merge Overlapping Subintervals","Medium"]] },
+      { title: "🔍 Searching Techniques", id: "searching", rows: [["Linear Search","Easy"],["Binary Search","Medium"],["Search in Rotated Sorted Array","Medium"],["Search in 2D Matrix","Medium"],["Find Peak Element","Medium"],["Find Minimum in Rotated","Medium"],["Find First and Last Position","Medium"],["Find the Duplicate Number","Medium"],["Find Missing Number","Medium"],["Find Missing and Repeating","Medium"],["Jump Search","Medium"]] },
+      { title: "📝 Strings", id: "strings", rows: [["Reverse a String","Easy"],["Palindrome Check","Easy"],["Longest Common Prefix","Medium"],["Longest Palindromic Substring","Medium"],["Count and Say","Medium"],["Group Anagrams","Medium"],["Longest Substring Without Repeating","Medium"],["Reverse every word","Medium"]] },
+      { title: "📚 Stacks & Queues", id: "sq", rows: [["Implement Stack using Arrays","Easy"],["Implement Stack using LL","Medium"],["Implement Queue Arrays","Easy"],["Queue using LL","Medium"],["Min Stack","Medium"],["Circular Queue","Medium"],["Stack using Queues","Medium"],["Queue using Stacks","Medium"]] }
+    ];
+    let html = '';
+    sections.forEach(section => {
+      html += `<div class="topic-header" data-target="${section.id}"><span class="arrow-icon"><i class="bi bi-chevron-right"></i></span> ${section.title}</div>`;
+      html += `<div class="collapsible-content" id="content-${section.id}"><table><thead><tr><th style="width:60px">Status</th><th>Topic</th><th>Difficulty</th></tr></thead><tbody>`;
+      section.rows.forEach(row => {
+        let diffClass = row[1].toLowerCase();
+        html += `<tr><td><input type="checkbox" class="progress-check"></td><td>${row[0]}</td><td class="${diffClass}">${row[1]}</td></tr>`;
+      });
+      html += `</tbody></table></div>`;
+    });
+    // special nested: Linked Lists with sub categories
+    html += `<div class="topic-header" data-target="linkedlists-main"><span class="arrow-icon"><i class="bi bi-chevron-right"></i></span> 🔗 Linked Lists</div>`;
+    html += `<div class="collapsible-content" id="content-linkedlists-main">`;
+    // single
+    html += `<div class="topic-header subtopic" data-target="singleLL"><span class="arrow-icon"><i class="bi bi-chevron-right"></i></span> ➡️ Single Linked List</div>`;
+    html += `<div class="collapsible-content" id="content-singleLL"><table><thead><tr><th>Status</th><th>Topic</th><th>Difficulty</th></tr></thead><tbody>
+      <tr><td><input class="progress-check" type="checkbox"></td><td>Reverse a Linked List</td><td class="medium">Medium</td></tr>
+      <tr><td><input class="progress-check" type="checkbox"></td><td>Intersection Point of Two Lists</td><td class="medium">Medium</td></tr>
+      <tr><td><input class="progress-check" type="checkbox"></td><td>Remove N-th Node from End</td><td class="medium">Medium</td></tr>
+      <tr><td><input class="progress-check" type="checkbox"></td><td>Merge Two Sorted Lists</td><td class="medium">Medium</td></tr>
+    </tbody></table></div>`;
+    // doubly
+    html += `<div class="topic-header subtopic" data-target="doublyLL"><span class="arrow-icon"><i class="bi bi-chevron-right"></i></span> 🔁 Doubly Linked List</div>`;
+    html += `<div class="collapsible-content" id="content-doublyLL"><table><thead><tr><th>Status</th><th>Topic</th><th>Difficulty</th></tr></thead><tbody>
+      <tr><td><input class="progress-check" type="checkbox"></td><td>Reverse a Doubly Linked List</td><td class="medium">Medium</td></tr>
+      <tr><td><input class="progress-check" type="checkbox"></td><td>Detect Cycle (Doubly)</td><td class="medium">Medium</td></tr>
+      <tr><td><input class="progress-check" type="checkbox"></td><td>Intersection Point (Doubly)</td><td class="medium">Medium</td></tr>
+      <tr><td><input class="progress-check" type="checkbox"></td><td>Merge Two Sorted Doubly</td><td class="medium">Medium</td></tr>
+    </tbody></table></div>`;
+    // circular
+    html += `<div class="topic-header subtopic" data-target="circularLL"><span class="arrow-icon"><i class="bi bi-chevron-right"></i></span> 🔄 Circular Linked List</div>`;
+    html += `<div class="collapsible-content" id="content-circularLL"><table><thead><tr><th>Status</th><th>Topic</th><th>Difficulty</th></tr></thead><tbody>
+      <tr><td><input class="progress-check" type="checkbox"></td><td>Detect Cycle (Circular)</td><td class="medium">Medium</td></tr>
+      <tr><td><input class="progress-check" type="checkbox"></td><td>Intersection (Circular)</td><td class="medium">Medium</td></tr>
+      <tr><td><input class="progress-check" type="checkbox"></td><td>Remove N-th Node (Circular)</td><td class="medium">Medium</td></tr>
+    </tbody></table></div></div>`;
+    // Extra DP, Trees quick
+    const extra = [{title:"🌳 Trees", rows:[["Tree Traversals","Medium"],["Height of Tree","Medium"],["Lowest Common Ancestor","Medium"],["Balanced Tree Check","Medium"]]},
+      {title:"⚙️ Dynamic Programming", rows:[["Fibonacci","Easy"],["Climbing Stairs","Easy"],["Coin Change","Medium"],["Longest Increasing Subsequence","Medium"],["0/1 Knapsack","Medium"]]}];
+    extra.forEach(ex => {
+      html += `<div class="topic-header" data-target="extra-${ex.title.replace(/\s/g,'')}"><span class="arrow-icon"><i class="bi bi-chevron-right"></i></span> ${ex.title}</div>`;
+      html += `<div class="collapsible-content" id="content-extra-${ex.title.replace(/\s/g,'')}"><table><thead><tr><th>Status</th><th>Topic</th><th>Difficulty</th></tr></thead><tbody>`;
+      ex.rows.forEach(r => { html += `<tr><td><input class="progress-check" type="checkbox"></td><td>${r[0]}</td><td class="${r[1].toLowerCase()}">${r[1]}</td></tr>`; });
+      html += `</tbody></table></div>`;
+    });
+    return html;
+  }
+  
+  // Resources page (new page idea: curated links, tips)
+  function renderResourcesPage() {
+    return `
+      <div class="glass-card">
+        <h2><i class="bi bi-journal-bookmark-fill"></i> DSA Learning Resources</h2>
+        <p class="text-secondary">Curated tools, cheat sheets & problem platforms to boost your coding interview prep.</p>
+        <div class="row mt-4">
+          <div class="col-md-6 mb-3"><div class="bg-dark p-3 rounded-3 border border-secondary"><i class="bi bi-youtube text-danger fs-3"></i> <h5 class="d-inline ms-2">YouTube Channels</h5><ul class="mt-2"><li>takeUforward</li><li>NeetCode</li><li>CodeHelp - by Babbar</li></ul></div></div>
+          <div class="col-md-6 mb-3"><div class="bg-dark p-3 rounded-3 border border-secondary"><i class="bi bi-book-half text-warning fs-3"></i> <h5 class="d-inline ms-2">Must-Read Sheets</h5><ul><li>Striver’s SDE Sheet</li><li>LeetCode Explore Cards</li><li>AlgoMonster</li></ul></div></div>
+          <div class="col-md-6 mb-3"><div class="bg-dark p-3 rounded-3 border border-secondary"><i class="bi bi-code-slash text-info fs-3"></i> <h5 class="d-inline ms-2">Practice Platforms</h5><ul><li>LeetCode</li><li>GeeksforGeeks</li><li>Codeforces (for contests)</li></ul></div></div>
+          <div class="col-md-6 mb-3"><div class="bg-dark p-3 rounded-3 border border-secondary"><i class="bi bi-lightbulb text-warning fs-3"></i> <h5 class="d-inline ms-2">Pro Tips</h5><ul><li>Solve at least 1 problem daily</li><li>Revise patterns: Sliding Window, Two Pointers, DP</li><li>Mock interviews = key</li></ul></div></div>
+        </div>
+        <hr class="bg-secondary">
+        <div class="alert alert-secondary bg-transparent text-light border-secondary">📌 "Consistency > Intensity" – track your checkmarks and revisit weak topics.</div>
+      </div>
+    `;
+  }
+  
+  // attach toggles after rendering
+  function attachToggleEvents() {
+    document.querySelectorAll('.topic-header').forEach(header => {
+      header.removeEventListener('click', toggleHandler);
+      header.addEventListener('click', toggleHandler);
+    });
+    function toggleHandler(e) {
+      const targetId = this.getAttribute('data-target');
+      const contentDiv = document.getElementById(`content-${targetId}`);
+      if(!contentDiv) return;
+      this.classList.toggle('active');
+      if(contentDiv.style.maxHeight && contentDiv.style.maxHeight !== "0px") {
+        contentDiv.style.maxHeight = null;
+      } else {
+        contentDiv.style.maxHeight = contentDiv.scrollHeight + "px";
+      }
+      // update parent containers if any nested (to avoid clipping)
+      let parent = this.parentElement;
+      while(parent) {
+        if(parent.classList && parent.classList.contains('collapsible-content') && parent.style.maxHeight && parent.style.maxHeight !== "0px") {
+          parent.style.maxHeight = parent.scrollHeight + "px";
+        }
+        parent = parent.parentElement;
+      }
+    }
+    // initially set all content max-height null
+    document.querySelectorAll('.collapsible-content').forEach(c => c.style.maxHeight = null);
+  }
+  
+  function renderPage(page) {
+    const root = document.getElementById('app-root');
+    if(page === 'home') {
+      root.innerHTML = renderHomePage();
+      // after render bind checkboxes and progress
+      bindCheckboxEvents();
+      loadProgressForUser();
+      document.getElementById('clearCompletedBtn')?.addEventListener('click', () => {
+        document.querySelectorAll('.progress-check:checked').forEach(cb => cb.checked = false);
+        saveAllProgress();
+      });
+      attachToggleEvents();
+    } else if(page === 'resources') {
+      root.innerHTML = renderResourcesPage();
+    }
+    // update active nav class
+    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+    if(page === 'home') document.getElementById('nav-home')?.classList.add('active');
+    else if(page === 'resources') document.getElementById('nav-resources')?.classList.add('active');
+  }
+  
+  // handle navigation and popstate
+  function navigate(page) {
+    const url = new URL(window.location.href);
+    url.searchParams.set('page', page);
+    window.history.pushState({}, '', url);
+    renderPage(page);
+  }
+  window.addEventListener('popstate', () => renderPage(getCurrentPage()));
+  
+  // event listeners login/signup
+  document.getElementById('doLoginBtn')?.addEventListener('click', () => {
+    const uname = document.getElementById('loginUsername').value;
+    const pwd = document.getElementById('loginPassword').value;
+    if(loginUser(uname, pwd)) {
+      bootstrap.Modal.getInstance(document.getElementById('loginModal'))?.hide();
+    }
+  });
+  document.getElementById('doSignupBtn')?.addEventListener('click', () => {
+    const email = document.getElementById('signupEmail').value;
+    const user = document.getElementById('signupUser').value;
+    const pass = document.getElementById('signupPass').value;
+    const confirm = document.getElementById('signupConfirm').value;
+    signupUser(email, user, pass, confirm);
+    bootstrap.Modal.getInstance(document.getElementById('signupModal'))?.hide();
+  });
+  document.getElementById('logoutBtn')?.addEventListener('click', (e) => { e.preventDefault(); logout(); });
+  
+  // initial load
+  updateUserUI();
+  renderPage(getCurrentPage());
+</script>
+</body>
+</html>
