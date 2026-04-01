@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Resources | AlgoTracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .resource-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .resource-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .resource-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .resource-body {
+            padding: 1.5rem;
+        }
+        
+        .resource-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .resource-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .resource-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .resource-list a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .resource-list a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+        
+        .tip-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tip-icon {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .stats-badge {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 10px;
+            padding: 0.5rem 1rem;
+            text-align: center;
+        }
+        
+        .stats-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-code"></i> AlgoTracker
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="dsaDropdown" role="button" data-bs-toggle="dropdown">
+                            DSA Content
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="dsa-sheet.html">DSA Practice Sheet</a></li>
+                            <li><a class="dropdown-item active" href="resources.html">Learning Resources</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" onclick="localStorage.clear()">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container py-5">
+        <div class="text-center text-white mb-5">
+            <h1 class="display-4 fw-bold">Learning Resources</h1>
+            <p class="lead">Curated resources to help you master Data Structures and Algorithms</p>
+        </div>
+        
+        <!-- Stats Row -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-3">
+                <div class="stats-badge">
+                    <div class="stats-number">100+</div>
+                    <div>Video Tutorials</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-badge">
+                    <div class="stats-number">50+</div>
+                    <div>Articles</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-badge">
+                    <div class="stats-number">10+</div>
+                    <div>Practice Platforms</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-badge">
+                    <div class="stats-number">24/7</div>
+                    <div>Community Support</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- YouTube Channels -->
+        <h2 class="text-white mb-4"><i class="fab fa-youtube"></i> Best YouTube Channels</h2>
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon"><i class="fab fa-youtube"></i></div>
+                        <h4>takeUforward</h4>
+                    </div>
+                    <div class="resource-body">
+                        <p>Best for DSA and interview preparation. Complete placement series with detailed explanations.</p>
+                        <a href="https://www.youtube.com/@takeUforward" target="_blank" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-external-link-alt"></i> Visit Channel
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon"><i class="fab fa-youtube"></i></div>
+                        <h4>CodeHelp - by Babbar</h4>
+                    </div>
+                    <div class="resource-body">
+                        <p>Complete DSA course with C++ and web development tutorials. Beginner friendly.</p>
+                        <a href="https://www.youtube.com/@CodeHelp" target="_blank" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-external-link-alt"></i> Visit Channel
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon"><i class="fab fa-youtube"></i></div>
+                        <h4>Apna College</h4>
+                    </div>
+                    <div class="resource-body">
+                        <p>Hindi tutorials covering DSA, development, and placement preparation.</p>
+                        <a href="https://www.youtube.com/@ApnaCollegeOfficial" target="_blank" class="btn btn-outline-primary w-100">
+                            <i class="fas fa-external-link-alt"></i> Visit Channel
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Practice Platforms -->
+        <h2 class="text-white mb-4"><i class="fas fa-laptop-code"></i> Practice Platforms</h2>
+        <div class="row g-4 mb-5">
+            <div class="col-md-3">
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon"><i class="fas fa-code"></i></div>
+                        <h4>LeetCode</h4>
+                    </div>
+                    <div class="resource-body">
+                        <p>Industry standard platform with company-specific problems.</p>
+                        <a href="https://leetcode.com" target="_blank" class="btn btn-sm btn-outline-primary">Visit →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon"><i class="fas fa-code-branch"></i></div>
+                        <h4>GeeksforGeeks</h4>
+                    </div>
+                    <div class="resource-body">
+                        <p>Extensive articles and problems for all topics.</p>
+                        <a href="https://geeksforgeeks.org" target="_blank" class="btn btn-sm btn-outline-primary">Visit →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon"><i class="fas fa-trophy"></i></div>
+                        <h4>Codeforces</h4>
+                    </div>
+                    <div class="resource-body">
+                        <p>Competitive programming platform with regular contests.</p>
+                        <a href="https://codeforces.com" target="_blank" class="btn btn-sm btn-outline-primary">Visit →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="resource-card">
+                    <div class="resource-header">
+                        <div class="resource-icon"><i class="fas fa-chart-line"></i></div>
+                        <h4>HackerRank</h4>
+                    </div>
+                    <div class="resource-body">
+                        <p>Skill-based challenges and certifications.</p>
+                        <a href="https://hackerrank.com" target="_blank" class="btn btn-sm btn-outline-primary">Visit →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Study Tips -->
+        <h2 class="text-white mb-4"><i class="fas fa-lightbulb"></i> Study Tips & Strategies</h2>
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="tip-card">
+                    <div class="tip-icon"><i class="fas fa-calendar-day"></i></div>
+                    <h5>Consistency is Key</h5>
+                    <p>Solve at least 1-2 problems daily to build momentum and retention.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="tip-card">
+                    <div class="tip-icon"><i class="fas fa-book-open"></i></div>
+                    <h5>Understand Concepts First</h5>
+                    <p>Don't just memorize solutions - understand the underlying patterns and concepts.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="tip-card">
+                    <div class="tip-icon"><i class="fas fa-clock"></i></div>
+                    <h5>Time Yourself</h5>
+                    <p>Practice with time limits to simulate interview conditions.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="tip-card">
+                    <div class="tip-icon"><i class="fas fa-users"></i></div>
+                    <h5>Join Communities</h5>
+                    <p>Discuss problems with peers to gain different perspectives.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="tip-card">
+                    <div class="tip-icon"><i class="fas fa-repeat"></i></div>
+                    <h5>Review & Revise</h5>
+                    <p>Regularly review solved problems to reinforce learning.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="tip-card">
+                    <div class="tip-icon"><i class="fas fa-chart-simple"></i></div>
+                    <h5>Track Progress</h5>
+                    <p>Use this tracker to monitor your journey and stay motivated!</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Recommended Books -->
+        <h2 class="text-white mb-4"><i class="fas fa-book"></i> Recommended Books</h2>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="resource-card">
+                    <div class="resource-body">
+                        <h4>Introduction to Algorithms (CLRS)</h4>
+                        <p class="text-muted">By Thomas H. Cormen, Charles E. Leiserson</p>
+                        <p>The definitive textbook on algorithms, covering all essential topics in depth.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="resource-card">
+                    <div class="resource-body">
+                        <h4>Cracking the Coding Interview</h4>
+                        <p class="text-muted">By Gayle Laakmann McDowell</p>
+                        <p>189 programming questions and solutions with interview preparation strategies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2026 AlgoTracker. All rights reserved. | Keep Learning, Keep Growing! 🚀</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Check if user is logged in
+        if (!localStorage.getItem('loggedInUser')) {
+            window.location.href = 'index.html';
+        }
+        
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.resource-card, .tip-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

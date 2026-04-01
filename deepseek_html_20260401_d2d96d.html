@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Practice Sheet | AlgoTracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .navbar-brand {
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .main-content {
+            padding: 2rem 0;
+        }
+        
+        .progress-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .progress-bar-custom {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        
+        .topic-card {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .topic-header {
+            background: #f8f9fa;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .topic-header:hover {
+            background: #e9ecef;
+        }
+        
+        .topic-title {
+            font-weight: 600;
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        
+        .topic-stats {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        .topic-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        
+        .topic-content.show {
+            max-height: 2000px;
+        }
+        
+        .problem-table {
+            width: 100%;
+        }
+        
+        .problem-table th {
+            background: #f8f9fa;
+            padding: 12px;
+            font-weight: 600;
+        }
+        
+        .problem-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .difficulty-easy {
+            color: #22c55e;
+            font-weight: 500;
+        }
+        
+        .difficulty-medium {
+            color: #facc15;
+            font-weight: 500;
+        }
+        
+        .difficulty-hard {
+            color: #ef4444;
+            font-weight: 500;
+        }
+        
+        .filter-buttons {
+            margin-bottom: 1.5rem;
+        }
+        
+        .filter-btn {
+            margin: 0 5px;
+            border-radius: 20px;
+            padding: 5px 15px;
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-color: transparent;
+        }
+        
+        footer {
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .arrow {
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        
+        .topic-header.open .arrow {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-code"></i> AlgoTracker
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="dsaDropdown" role="button" data-bs-toggle="dropdown">
+                            DSA Content
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item active" href="dsa-sheet.html">DSA Practice Sheet</a></li>
+                            <li><a class="dropdown-item" href="resources.html">Learning Resources</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" onclick="localStorage.clear()">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="main-content">
+        <div class="container">
+            <!-- Welcome Banner -->
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="fas fa-smile-wink"></i> Welcome back, <strong id="userNameDisplay">Learner</strong>! Ready to solve some problems today?
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            
+            <!-- Progress Card -->
+            <div class="progress-card">
+                <h4><i class="fas fa-chart-line"></i> Your Progress</h4>
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Overall Completion</span>
+                    <span><span id="completedCount">0</span> / <span id="totalCount">0</span> problems</span>
+                </div>
+                <div class="progress" style="height: 10px; border-radius: 10px;">
+                    <div class="progress-bar progress-bar-custom" id="progressBar" style="width: 0%"></div>
+                </div>
+            </div>
+            
+            <!-- Filter Section -->
+            <div class="filter-buttons text-center">
+                <button class="btn btn-outline-secondary filter-btn active" data-filter="all">All</button>
+                <button class="btn btn-outline-success filter-btn" data-filter="easy">Easy</button>
+                <button class="btn btn-outline-warning filter-btn" data-filter="medium">Medium</button>
+                <button class="btn btn-outline-danger filter-btn" data-filter="hard">Hard</button>
+            </div>
+            
+            <!-- Topics Container -->
+            <div id="topicsContainer"></div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2026 AlgoTracker. All rights reserved. | Keep Coding! 🚀</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // DSA Problems Data
+        const dsaData = {
+            basics: {
+                title: "📚 Learn the Basics",
+                problems: [
+                    { name: "STL (Standard Template Library)", difficulty: "easy" },
+                    { name: "Recursion", difficulty: "medium" },
+                    { name: "Bit Manipulation", difficulty: "medium" },
+                    { name: "Backtracking", difficulty: "hard" },
+                    { name: "Hashing", difficulty: "medium" }
+                ]
+            },
+            sorting: {
+                title: "🔄 Sorting Techniques",
+                problems: [
+                    { name: "Bubble Sort", difficulty: "easy" },
+                    { name: "Selection Sort", difficulty: "easy" },
+                    { name: "Insertion Sort", difficulty: "easy" },
+                    { name: "Merge Sort", difficulty: "medium" },
+                    { name: "Quick Sort", difficulty: "medium" }
+                ]
+            },
+            arrays: {
+                title: "📊 Arrays",
+                problems: [
+                    { name: "Two Sum", difficulty: "easy" },
+                    { name: "Best Time to Buy and Sell Stock", difficulty: "easy" },
+                    { name: "Product of Array Except Self", difficulty: "medium" },
+                    { name: "Maximum Subarray (Kadane's Algorithm)", difficulty: "medium" },
+                    { name: "Trapping Rain Water", difficulty: "hard" },
+                    { name: "Container With Most Water", difficulty: "medium" },
+                    { name: "3 Sum", difficulty: "medium" },
+                    { name: "4 Sum", difficulty: "medium" }
+                ]
+            },
+            searching: {
+                title: "🔍 Searching Techniques",
+                problems: [
+                    { name: "Linear Search", difficulty: "easy" },
+                    { name: "Binary Search", difficulty: "easy" },
+                    { name: "Search in Rotated Sorted Array", difficulty: "medium" },
+                    { name: "Search in 2D Matrix", difficulty: "medium" },
+                    { name: "Find Peak Element", difficulty: "medium" },
+                    { name: "Find First and Last Position", difficulty: "medium" }
+                ]
+            },
+            strings: {
+                title: "📝 Strings",
+                problems: [
+                    { name: "Reverse a String", difficulty: "easy" },
+                    { name: "Valid Palindrome", difficulty: "easy" },
+                    { name: "Longest Palindromic Substring", difficulty: "medium" },
+                    { name: "Longest Substring Without Repeating Characters", difficulty: "medium" },
+                    { name: "Group Anagrams", difficulty: "medium" }
+                ]
+            },
+            linkedlists: {
+                title: "🔗 Linked Lists",
+                problems: [
+                    { name: "Reverse a Linked List", difficulty: "medium" },
+                    { name: "Detect Cycle in Linked List", difficulty: "medium" },
+                    { name: "Merge Two Sorted Lists", difficulty: "medium" },
+                    { name: "Remove Nth Node From End", difficulty: "medium" },
+                    { name: "Palindrome Linked List", difficulty: "medium" }
+                ]
+            },
+            trees: {
+                title: "🌳 Trees",
+                problems: [
+                    { name: "Tree Traversals (Inorder, Preorder, Postorder)", difficulty: "medium" },
+                    { name: "Maximum Depth of Binary Tree", difficulty: "easy" },
+                    { name: "Validate Binary Search Tree", difficulty: "medium" },
+                    { name: "Lowest Common Ancestor", difficulty: "medium" }
+                ]
+            },
+            graphs: {
+                title: "📈 Graphs",
+                problems: [
+                    { name: "BFS Traversal", difficulty: "medium" },
+                    { name: "DFS Traversal", difficulty: "medium" },
+                    { name: "Detect Cycle in Graph", difficulty: "medium" },
+                    { name: "Topological Sort", difficulty: "medium" },
+                    { name: "Dijkstra's Algorithm", difficulty: "hard" }
+                ]
+            },
+            dp: {
+                title: "🎯 Dynamic Programming",
+                problems: [
+                    { name: "Fibonacci Number", difficulty: "easy" },
+                    { name: "Climbing Stairs", difficulty: "easy" },
+                    { name: "0/1 Knapsack", difficulty: "medium" },
+                    { name: "Longest Common Subsequence", difficulty: "medium" },
+                    { name: "Coin Change", difficulty: "medium" }
+                ]
+            }
+        };
+        
+        // Load saved progress
+        let savedProgress = JSON.parse(localStorage.getItem('dsaProgress') || '{}');
+        
+        function saveProgress() {
+            localStorage.setItem('dsaProgress', JSON.stringify(savedProgress));
+            updateStats();
+        }
+        
+        function updateStats() {
+            let total = 0;
+            let completed = 0;
+            
+            for (let topic in dsaData) {
+                dsaData[topic].problems.forEach((problem, idx) => {
+                    const key = `${topic}_${idx}`;
+                    total++;
+                    if (savedProgress[key]) completed++;
+                });
+            }
+            
+            document.getElementById('completedCount').innerText = completed;
+            document.getElementById('totalCount').innerText = total;
+            const percentage = total > 0 ? (completed / total) * 100 : 0;
+            document.getElementById('progressBar').style.width = percentage + '%';
+        }
+        
+        function toggleTopic(element) {
+            const content = element.nextElementSibling;
+            element.classList.toggle('open');
+            content.classList.toggle('show');
+        }
+        
+        function renderTopics(filter = 'all') {
+            const container = document.getElementById('topicsContainer');
+            container.innerHTML = '';
+            
+            for (let [topicId, topic] of Object.entries(dsaData)) {
+                // Filter problems
+                let filteredProblems = topic.problems;
+                if (filter !== 'all') {
+                    filteredProblems = topic.problems.filter(p => p.difficulty === filter);
+                }
+                
+                if (filteredProblems.length === 0) continue;
+                
+                const topicCard = document.createElement('div');
+                topicCard.className = 'topic-card';
+                
+                // Calculate topic completion
+                let topicTotal = topic.problems.length;
+                let topicCompleted = 0;
+                topic.problems.forEach((problem, idx) => {
+                    if (savedProgress[`${topicId}_${idx}`]) topicCompleted++;
+                });
+                const topicPercent = Math.round((topicCompleted / topicTotal) * 100);
+                
+                topicCard.innerHTML = `
+                    <div class="topic-header" onclick="toggleTopic(this)">
+                        <div>
+                            <div class="topic-title">${topic.title}</div>
+                            <div class="topic-stats">${topicCompleted}/${topicTotal} completed (${topicPercent}%)</div>
+                        </div>
+                        <div>
+                            <span class="arrow"><i class="fas fa-chevron-right"></i></span>
+                        </div>
+                    </div>
+                    <div class="topic-content">
+                        <table class="problem-table">
+                            <thead>
+                                <tr><th style="width: 50px"></th><th>Problem</th><th style="width: 100px">Difficulty</th></tr>
+                            </thead>
+                            <tbody>
+                                ${filteredProblems.map((problem, idx) => {
+                                    const originalIdx = topic.problems.findIndex(p => p.name === problem.name);
+                                    const key = `${topicId}_${originalIdx}`;
+                                    return `
+                                        <tr data-difficulty="${problem.difficulty}">
+                                            <td><input type="checkbox" class="problem-checkbox" data-topic="${topicId}" data-index="${originalIdx}" ${savedProgress[key] ? 'checked' : ''}></td>
+                                            <td>${problem.name}</td>
+                                            <td class="difficulty-${problem.difficulty}">${problem.difficulty.toUpperCase()}</td>
+                                        </tr>
+                                    `;
+                                }).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+                
+                container.appendChild(topicCard);
+            }
+            
+            // Add event listeners to checkboxes
+            document.querySelectorAll('.problem-checkbox').forEach(cb => {
+                cb.addEventListener('change', function() {
+                    const key = `${this.dataset.topic}_${this.dataset.index}`;
+                    savedProgress[key] = this.checked;
+                    saveProgress();
+                    renderTopics(filter);
+                });
+            });
+        }
+        
+        // Filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                renderTopics(this.dataset.filter);
+            });
+        });
+        
+        // Display user name
+        const loggedInUser = localStorage.getItem('loggedInUser');
+        if (loggedInUser) {
+            document.getElementById('userNameDisplay').innerText = loggedInUser;
+        } else {
+            window.location.href = 'index.html';
+        }
+        
+        // Initial render
+        renderTopics('all');
+    </script>
+</body>
+</html>
